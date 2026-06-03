@@ -20,7 +20,6 @@ console.log((0, student_model_1.parseStudent)({
     id: "STU-001",
     name: "Hana",
 }));
-// Uncomment to test the exception
 console.log((0, student_model_1.parseStudent)({
     id: 42,
     name: "Test",

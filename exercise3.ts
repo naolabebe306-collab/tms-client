@@ -25,7 +25,6 @@ console.log(
   }),
 );
 
-// Uncomment to test the exception
 console.log(
   parseStudent({
     id: 42,

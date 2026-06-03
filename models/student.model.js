@@ -25,6 +25,6 @@ function parseStudent(raw) {
     return {
         id: obj.id,
         name: obj.name,
-        enrollmentDate: polyfill_1.Temporal.Now.instant()
+        enrollmentDate: polyfill_1.Temporal.Now.instant(),
     };
 }

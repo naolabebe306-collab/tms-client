@@ -1,12 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const polyfill_1 = require("@js-temporal/polyfill");
-const student = {
-    id: "STU-001",
-    name: "Hana Tadesse",
-    enrollmentDate: polyfill_1.Temporal.Now.instant(),
+const assessment_model_1 = require("./models/assessment.model");
+const quiz = {
+    id: "QUIZ-001",
+    kind: "quiz",
+    title: "SQL Basics",
+    correctAnswers: 8,
+    totalQuestions: 10,
 };
-// Uncomment one at a time to see compiler errors
-// student.id = "STU-999";
-// console.log(student.gpa.toFixed(2));
-console.log(student.gpa?.toFixed(2) ?? "Not yet graded");
+const lab = {
+    id: "LAB-001",
+    kind: "lab",
+    title: "REST API Project",
+    functionalityScore: 85,
+    codeQualityScore: 90,
+};
+console.log(`Quiz grade: ${(0, assessment_model_1.calculateGrade)(quiz)}%`);
+console.log(`Lab grade: ${(0, assessment_model_1.calculateGrade)(lab)}%`);
+// Uncomment this line to test readonly error
+// quiz.id = "QUIZ-999";

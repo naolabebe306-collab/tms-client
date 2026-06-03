@@ -1,16 +1,23 @@
-import { Temporal } from "@js-temporal/polyfill";
-import { Student } from "./models/student.model";
+import { AssessmentItem, calculateGrade } from "./models/assessment.model";
 
-const student: Student = {
-  id: "STU-001",
-  name: "Hana Tadesse",
-  enrollmentDate: Temporal.Now.instant(),
+const quiz: AssessmentItem = {
+  id: "QUIZ-001",
+  kind: "quiz",
+  title: "SQL Basics",
+  correctAnswers: 8,
+  totalQuestions: 10,
 };
 
-// Uncomment one at a time to see compiler errors
+const lab: AssessmentItem = {
+  id: "LAB-001",
+  kind: "lab",
+  title: "REST API Project",
+  functionalityScore: 85,
+  codeQualityScore: 90,
+};
 
-// student.id = "STU-999";
+console.log(`Quiz grade: ${calculateGrade(quiz)}%`);
+console.log(`Lab grade: ${calculateGrade(lab)}%`);
 
-// console.log(student.gpa.toFixed(2));
-
-console.log(student.gpa?.toFixed(2) ?? "Not yet graded");
+// Uncomment this line to test readonly error
+// quiz.id = "QUIZ-999";
