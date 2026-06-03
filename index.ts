@@ -1,23 +1,25 @@
-import { AssessmentItem, calculateGrade } from "./models/assessment.model";
+import { Temporal } from "@js-temporal/polyfill";
 
-const quiz: AssessmentItem = {
-  id: "QUIZ-001",
-  kind: "quiz",
-  title: "SQL Basics",
-  correctAnswers: 8,
-  totalQuestions: 10,
+import {
+  EnrollmentStatus,
+  describeEnrollment,
+} from "./models/enrollment.model";
+
+import { CourseStatus, describeCourse } from "./models/course.model";
+
+const pending: EnrollmentStatus = {
+  status: "PENDING",
+  requestedAt: Temporal.Now.instant(),
+  studentId: "STU-001",
+  courseId: "CRS-101",
 };
 
-const lab: AssessmentItem = {
-  id: "LAB-001",
-  kind: "lab",
-  title: "REST API Project",
-  functionalityScore: 85,
-  codeQualityScore: 90,
+console.log(describeEnrollment(pending));
+
+const webDev: CourseStatus = {
+  status: "ACTIVE",
+  enrolledCount: 28,
+  startDate: Temporal.PlainDate.from("2026-09-01"),
 };
 
-console.log(`Quiz grade: ${calculateGrade(quiz)}%`);
-console.log(`Lab grade: ${calculateGrade(lab)}%`);
-
-// Uncomment this line to test readonly error
-// quiz.id = "QUIZ-999";
+console.log(describeCourse(webDev));
